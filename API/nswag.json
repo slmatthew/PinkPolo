@@ -1,0 +1,20 @@
+{
+  "runtime": "Net80",
+  "defaultVariables": null,
+  "documentGenerator": {
+    "aspNetCoreToOpenApi": {
+      "project": null,
+      "msBuildProjectExtensionsPath": null,
+      "configuration": null,
+      "runtime": null,
+      "targetFramework": null,
+      "noBuild": true,
+      "msBuildOutputPath": null,
+      "infoTitle": "PinkPolo",
+      "infoDescription": null,
+      "infoVersion": "1.0.0",
+      "documentName": "v1",
+      "output": "swagger.json"
+    }
+  }
+}
