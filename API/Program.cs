@@ -18,7 +18,10 @@ builder.Services.AddApiVersioning(config =>
 });
 
 
-builder.Services.AddDbContextFactory<PinkPoloContext>(options => options.UseSqlServer(@"Server=slmatthew;Database=pinkpolo;Integrated Security=True;TrustServerCertificate=true;"));
+builder.Services.AddDbContextFactory<PinkPoloContext>(options => {
+    options.UseSqlServer(@"Server=slmatthew;Database=pinkpolo;Integrated Security=True;TrustServerCertificate=true;");
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 
 var app = builder.Build();
