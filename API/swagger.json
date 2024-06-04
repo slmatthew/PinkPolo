@@ -1,0 +1,1422 @@
+{
+  "x-generator": "NSwag v14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v{version}/Companies": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_GetAll",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_Create",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Companies/{id}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Company"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_UpdatePUT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_UpdatePATCH",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Companies/type/{type}": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "operationId": "Companies_GetByType",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Employees": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_GetAll",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employee"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_Create",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Employees/{id}": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_UpdatePUT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_UpdatePATCH",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employees"
+        ],
+        "operationId": "Employees_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Operations": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_GetAll",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Operation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_Create",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Operation"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Operations/{id}": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_UpdatePUT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Operation"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_UpdatePATCH",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Operation"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/OperationTypes": {
+      "get": {
+        "tags": [
+          "OperationTypes"
+        ],
+        "operationId": "OperationTypes_GetAll",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OperationType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "OperationTypes"
+        ],
+        "operationId": "OperationTypes_Create",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperationType"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/OperationTypes/{id}": {
+      "get": {
+        "tags": [
+          "OperationTypes"
+        ],
+        "operationId": "OperationTypes_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "OperationTypes"
+        ],
+        "operationId": "OperationTypes_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperationType"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "OperationTypes"
+        ],
+        "operationId": "OperationTypes_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Units": {
+      "get": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_GetAll",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Unit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_Create",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Unit"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Units/{id}": {
+      "get": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unit"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_UpdatePUT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Unit"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_UpdatePATCH",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Unit"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Units"
+        ],
+        "operationId": "Units_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Company": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "companyID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isCarsharing": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "employeeID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "passphrase": {
+            "type": "string"
+          },
+          "isAppAllowed": {
+            "type": "boolean"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Operation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "employeeID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "unitID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operationType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "issuedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "OperationType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Unit": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "unitID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "companyID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "lat": {
+            "type": "number",
+            "format": "float"
+          },
+          "lng": {
+            "type": "number",
+            "format": "float"
+          },
+          "uniqueNumber": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
