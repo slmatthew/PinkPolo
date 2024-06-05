@@ -36,11 +36,11 @@
                 <TextBox Width="150" Margin="5" Text="{Binding NewItem.CompanyID, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <Label Content="Name:"/>
+                <Label Content="Наименование:"/>
                 <TextBox Width="150" Margin="5" Text="{Binding NewItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <Label Content="Is Carsharing:"/>
+                <Label Content="Каршеринг:"/>
                 <CheckBox Margin="5" IsChecked="{Binding NewItem.IsCarsharing, UpdateSourceTrigger=PropertyChanged}"/>  
             </StackPanel>
 
