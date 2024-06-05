@@ -3,10 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:PinkClient.ViewModels"
              xmlns:local="clr-namespace:PinkClient.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:OperationsViewModel/>
+    </UserControl.DataContext>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="35" />
+            <RowDefinition />
+            <RowDefinition MaxHeight="60"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Command="{Binding EditItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" />
+            <Button Content="Обновить" Command="{Binding UpdateListCommand}" Margin="5,0,0,0" />
+            <Button Content="Удалить" Command="{Binding DeleteItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" Margin="5,0,0,0" />
+        </StackPanel>
+
+        <DataGrid x:Name="dg" ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding EmployeeID}" IsReadOnly="True"/>
+                <DataGridComboBoxColumn Header="Сотрудник" 
+                                        ItemsSource="{Binding ElementName=dg, Path=DataContext.Employees}"
+                                        DisplayMemberPath="FullName"
+                                        SelectedValuePath="EmployeeID"
+                                        SelectedValueBinding="{Binding EmployeeID, Mode=TwoWay}"/>
+                <DataGridComboBoxColumn Header="ТС" 
+                                        ItemsSource="{Binding ElementName=dg, Path=DataContext.Units}"
+                                        DisplayMemberPath="UniqueNumber"
+                                        SelectedValuePath="UnitID"
+                                        SelectedValueBinding="{Binding UnitID, Mode=TwoWay}"/>
+                <DataGridComboBoxColumn Header="Тип" 
+                                        ItemsSource="{Binding ElementName=dg, Path=DataContext.OperationTypes}"
+                                        DisplayMemberPath="Name"
+                                        SelectedValuePath="OperationTypeID"
+                                        SelectedValueBinding="{Binding OperationTypeID, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding IssuedAt}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Сотрудник:"/>
+                    <ComboBox ItemsSource="{Binding ElementName=dg, Path=DataContext.Employees}"
+                                DisplayMemberPath="FullName"
+                                SelectedValuePath="EmployeeID"
+                                SelectedValue="{Binding NewItem.EmployeeID, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="ТС:"/>
+                    <ComboBox ItemsSource="{Binding ElementName=dg, Path=DataContext.Units}"
+                                DisplayMemberPath="UniqueNumber"
+                                SelectedValuePath="UnitID"
+                                SelectedValue="{Binding NewItem.UnitID, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Тип:"/>
+                    <ComboBox ItemsSource="{Binding ElementName=dg, Path=DataContext.OperationTypes}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="OperationTypeID"
+                                SelectedValue="{Binding NewItem.OperationType, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Дата:"/>
+                    <DatePicker SelectedDate="{Binding NewItem.IssuedAt}" Width="120"/>
+                </StackPanel>
+
+                <Button Content="Добавить" Command="{Binding AddItemCommand}" Style="{StaticResource MaterialDesignFlatButton}" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
