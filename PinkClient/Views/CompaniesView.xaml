@@ -41,10 +41,10 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Content="Is Carsharing:"/>
-                <CheckBox Margin="5" IsChecked="{Binding NewItem.IsCarsharing, UpdateSourceTrigger=PropertyChanged}"/>
+                <CheckBox Margin="5" IsChecked="{Binding NewItem.IsCarsharing, UpdateSourceTrigger=PropertyChanged}"/>  
             </StackPanel>
 
-            <Button Content="Add" Command="{Binding AddItemCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button Content="Добавить" Command="{Binding AddItemCommand}" Style="{StaticResource MaterialDesignFlatButton}" />
         </StackPanel>
     </Grid>
 </UserControl>
