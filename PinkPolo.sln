@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{4319E749-ADF6-444D-B0F9-1BFEE698E56A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkProvider", "PinkProvider\PinkProvider.csproj", "{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4319E749-ADF6-444D-B0F9-1BFEE698E56A} = {4319E749-ADF6-444D-B0F9-1BFEE698E56A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkClient", "PinkClient\PinkClient.csproj", "{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PinkClient"
+        xmlns:v="clr-namespace:PinkClient.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="Розовый Полик" Height="550" Width="900">
     <Grid>
-
+        <TabControl VerticalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <TabItem Header="Компании">
+                <v:CompaniesView/>
+            </TabItem>
+            <TabItem Header="Работники">
+                <v:EmployeesView/>
+            </TabItem>
+            <TabItem Header="История обслуживания">
+                <v:OperationsView/>
+            </TabItem>
+            <TabItem Header="Виды обслуживания">
+                <v:OperationTypesView/>
+            </TabItem>
+            <TabItem Header="ТС">
+                <v:UnitsView/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
