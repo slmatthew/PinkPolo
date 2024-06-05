@@ -7,6 +7,7 @@ using PinkClient.Models;
 using System.Windows;
 using PinkHttpClient;
 using System.Windows.Input;
+using System.Text.Json;
 
 namespace PinkClient.ViewModels
 {
@@ -52,9 +53,13 @@ namespace PinkClient.ViewModels
 
         public OperationsViewModel()
         {
-            NewItem = new Operation();
-
             UpdateList();
+
+            NewItem = new Operation()
+            {
+                EmployeeID = null,
+                IssuedAt = DateTime.Now,
+            };
         }
 
         public ICommand UpdateListCommand
@@ -74,10 +79,13 @@ namespace PinkClient.ViewModels
             Employees.Add(new Employee() { EmployeeID = 0, FullName = "/пусто/" });
 
             Units = new ObservableCollection<Unit>(uniClient.GetAllAsync(App.ApiVersion).Result);
-            Units.Add(new Unit() { UnitID = 0, UniqueNumber = "/пусто/" });
 
             OperationTypes = new ObservableCollection<OperationType>(optClient.GetAllAsync(App.ApiVersion).Result);
-            OperationTypes.Add(new OperationType() { OperationTypeID = 0, Name = "/пусто/" });
+
+            Trace.WriteLine(JsonSerializer.Serialize(Items));
+            Trace.WriteLine(JsonSerializer.Serialize(Employees));
+            Trace.WriteLine(JsonSerializer.Serialize(Units));
+            Trace.WriteLine(JsonSerializer.Serialize(OperationTypes));
         }
 
         public DelegateCommand EditItemCommand
@@ -93,6 +101,10 @@ namespace PinkClient.ViewModels
             if (parameter != null)
             {
                 var item = (Operation)parameter;
+                if(item.EmployeeID == 0)
+                {
+                    item.EmployeeID = null;
+                }
 
                 try
                 {
@@ -176,6 +188,7 @@ namespace PinkClient.ViewModels
         {
             try
             {
+                Trace.WriteLine(JsonSerializer.Serialize(NewItem));
                 httpClient.CreateAsync(App.ApiVersion, NewItem).Wait();
             }
             catch (AggregateException ex)
@@ -186,7 +199,9 @@ namespace PinkClient.ViewModels
                     if (apiEx.StatusCode == 201)
                     {
                         Items.Add(NewItem);
+
                         NewItem = new Operation();
+                        NewItem.IssuedAt = DateTime.Now;
 
                         UpdateList();
                     }
