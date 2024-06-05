@@ -26,7 +26,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetOperation")]
-        public async Task<Operation?> GetById(long id)
+        public async Task<Operation?> GetById(int id)
         {
             PinkPoloContext context = _contextFactory.CreateDbContext();
             return await context.Operation.FindAsync(id);
@@ -48,7 +48,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] Operation item)
+        public async Task<IActionResult> Update(int id, [FromBody] Operation item)
         {
             if (item == null || item.OperationID != id)
             {
@@ -70,7 +70,7 @@ namespace API.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Update([FromBody] Operation item, long id)
+        public IActionResult Update([FromBody] Operation item, int id)
         {
             if (item == null)
             {
@@ -94,7 +94,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(long? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {

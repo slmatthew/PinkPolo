@@ -1660,14 +1660,14 @@ namespace PinkHttpClient
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Operation> GetByIdAsync(long id, string version)
+        public virtual System.Threading.Tasks.Task<Operation> GetByIdAsync(int id, string version)
         {
             return GetByIdAsync(id, version, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Operation> GetByIdAsync(long id, string version, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Operation> GetByIdAsync(int id, string version, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1745,14 +1745,14 @@ namespace PinkHttpClient
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<FileResponse> UpdatePUTAsync(long id, string version, Operation item)
+        public virtual System.Threading.Tasks.Task<FileResponse> UpdatePUTAsync(int id, string version, Operation item)
         {
             return UpdatePUTAsync(id, version, item, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileResponse> UpdatePUTAsync(long id, string version, Operation item, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<FileResponse> UpdatePUTAsync(int id, string version, Operation item, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1835,14 +1835,14 @@ namespace PinkHttpClient
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<FileResponse> UpdatePATCHAsync(long id, string version, Operation item)
+        public virtual System.Threading.Tasks.Task<FileResponse> UpdatePATCHAsync(int id, string version, Operation item)
         {
             return UpdatePATCHAsync(id, version, item, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileResponse> UpdatePATCHAsync(long id, string version, Operation item, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<FileResponse> UpdatePATCHAsync(int id, string version, Operation item, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1925,14 +1925,14 @@ namespace PinkHttpClient
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<FileResponse> DeleteAsync(long id, string version)
+        public virtual System.Threading.Tasks.Task<FileResponse> DeleteAsync(int id, string version)
         {
             return DeleteAsync(id, version, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileResponse> DeleteAsync(long id, string version, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<FileResponse> DeleteAsync(int id, string version, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
