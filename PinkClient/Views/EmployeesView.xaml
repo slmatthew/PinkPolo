@@ -34,7 +34,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="Паспорт:"/>
