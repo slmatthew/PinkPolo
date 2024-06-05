@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="PinkClient.Views.EmployeesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:PinkClient.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:EmployeesViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="35" />
+            <RowDefinition />
+            <RowDefinition MaxHeight="60"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Command="{Binding EditItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" />
+            <Button Content="Обновить" Command="{Binding UpdateListCommand}" Margin="5,0,0,0" />
+            <Button Content="Удалить" Command="{Binding DeleteItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" Margin="5,0,0,0" />
+        </StackPanel>
+
+        <DataGrid x:Name="dg" ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Паспорт" Binding="{Binding EmployeeID}"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn Header="Юзернейм" Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Passphrase}"/>
+                <DataGridCheckBoxColumn Header="Доступ к приложению" Binding="{Binding IsAppAllowed}"/>
+                <DataGridCheckBoxColumn Header="Админ" Binding="{Binding IsAdmin}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Паспорт:"/>
+                    <TextBox Width="150" Margin="5" Text="{Binding NewItem.EmployeeID, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="ФИО:"/>
+                    <TextBox Width="150" Margin="5" Text="{Binding NewItem.FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Номер телефона:"/>
+                    <TextBox Width="150" Margin="5" Text="{Binding NewItem.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Юзернейм:"/>
+                    <TextBox Width="150" Margin="5" Text="{Binding NewItem.Username, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Пароль:"/>
+                    <TextBox Width="150" Margin="5" Text="{Binding NewItem.Passphrase, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Доступ к приложению:"/>
+                    <CheckBox Margin="5" IsChecked="{Binding NewItem.IsAppAllowed, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Админ:"/>
+                    <CheckBox Margin="5" IsChecked="{Binding NewItem.IsAdmin, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <Button Content="Добавить" Command="{Binding AddItemCommand}" Style="{StaticResource MaterialDesignFlatButton}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

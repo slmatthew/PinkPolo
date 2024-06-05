@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="PinkClient.Views.OperationsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:PinkClient.ViewModels"
+             xmlns:cnv="clr-namespace:PinkClient.Converters"
+             xmlns:local="clr-namespace:PinkClient.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:OperationsViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <cnv:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="35" />
+            <RowDefinition />
+            <RowDefinition MaxHeight="60"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Command="{Binding EditItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" />
+            <Button Content="Обновить" Command="{Binding UpdateListCommand}" Margin="5,0,0,0" />
+            <Button Content="Удалить" Command="{Binding DeleteItemCommand}" CommandParameter="{Binding SelectedItem, ElementName=dg}" Margin="5,0,0,0" />
+        </StackPanel>
+
+        <DataGrid x:Name="dg" ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding OperationID}" IsReadOnly="True"/>
+                <DataGridComboBoxColumn 
+                    Header="Сотрудник" 
+                    SelectedValueBinding="{Binding EmployeeID, Mode=TwoWay}" 
+                    DisplayMemberPath="FullName" 
+                    SelectedValuePath="EmployeeID">
+
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Employees, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Employees, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridComboBoxColumn 
+                    Header="Номер ТС" 
+                    SelectedValueBinding="{Binding UnitID, Mode=TwoWay}" 
+                    DisplayMemberPath="UniqueNumber" 
+                    SelectedValuePath="UnitID">
+
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Units, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.Units, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridComboBoxColumn 
+                    Header="Действие" 
+                    SelectedValueBinding="{Binding OperationType, Mode=TwoWay}" 
+                    DisplayMemberPath="Name" 
+                    SelectedValuePath="OperationTypeID">
+
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.OperationTypes, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.OperationTypes, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding IssuedAt, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Сотрудник:"/>
+                    <ComboBox ItemsSource="{Binding DataContext.Employees, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                DisplayMemberPath="FullName"
+                                SelectedValuePath="EmployeeID"
+                                SelectedValue="{Binding NewItem.EmployeeID, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="ТС:"/>
+                    <ComboBox ItemsSource="{Binding Path=DataContext.Units, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                DisplayMemberPath="UniqueNumber"
+                                SelectedValuePath="UnitID"
+                                SelectedValue="{Binding NewItem.UnitID, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Тип:"/>
+                    <ComboBox ItemsSource="{Binding Path=DataContext.OperationTypes, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="OperationTypeID"
+                                SelectedValue="{Binding NewItem.OperationType, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <Button Content="Добавить" Command="{Binding AddItemCommand}" Style="{StaticResource MaterialDesignFlatButton}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

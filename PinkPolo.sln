@@ -5,6 +5,16 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{4319E749-ADF6-444D-B0F9-1BFEE698E56A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkProvider", "PinkProvider\PinkProvider.csproj", "{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4319E749-ADF6-444D-B0F9-1BFEE698E56A} = {4319E749-ADF6-444D-B0F9-1BFEE698E56A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkClient", "PinkClient\PinkClient.csproj", "{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6} = {C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,14 @@ Global
 		{4319E749-ADF6-444D-B0F9-1BFEE698E56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4319E749-ADF6-444D-B0F9-1BFEE698E56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4319E749-ADF6-444D-B0F9-1BFEE698E56A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4457198-A5F8-421E-BCC6-8DA08BBEDFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4009D46A-DEA4-47DD-B175-41E1E4A4CD16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

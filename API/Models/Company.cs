@@ -2,7 +2,7 @@
 {
     public class Company
     {
-        public int CompanyID { get; set; }
+        public long CompanyID { get; set; }
         public string Name { get; set; }
         public bool IsCarsharing { get; set; }
     }

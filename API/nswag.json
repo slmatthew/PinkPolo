@@ -4,17 +4,19 @@
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
       "project": null,
+      "documentName": "v1",
       "msBuildProjectExtensionsPath": null,
       "configuration": null,
       "runtime": null,
       "targetFramework": null,
       "noBuild": true,
       "msBuildOutputPath": null,
-      "infoTitle": "PinkPolo",
-      "infoDescription": null,
-      "infoVersion": "1.0.0",
-      "documentName": "v1",
-      "output": "swagger.json"
+      "verbose": true,
+      "workingDirectory": null,
+      "aspNetCoreEnvironment": null,
+      "output": "swagger.json",
+      "newLineBehavior": "Auto"
     }
-  }
+  },
+  "codeGenerators": {}
 }
